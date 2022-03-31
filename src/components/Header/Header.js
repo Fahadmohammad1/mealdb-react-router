@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "flowbite";
 
 const Header = () => {
+  const [searchText, setSearchText] = useState("");
+
+  const getSearchText = (e) => {
+    setSearchText(e.target.value);
+  };
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-      <div className="container flex  justify-around items-center mx-auto">
-        <a href="https://flowbite.com" className="flex items-center">
-          <span className="mr-2 self-center text-xl font-bold whitespace-nowrap dark:text-white">
+      <div className="container flex flex-wrap justify-around items-center mx-auto">
+        <div className="flex items-center">
+          <span className=" mr-2 self-center font-serif text-4xl font-bold whitespace-nowrap text-orange-400">
             Find Food
           </span>
-        </a>
+        </div>
         <div className="flex w-full md:w-auto justify-between">
           <div className=" relative mr-3 md:mr-0 md:block">
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -27,10 +32,11 @@ const Header = () => {
               </svg>
             </div>
             <input
+              onChange={getSearchText}
               type="text"
               id="email-adress-icon"
               className="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search..."
+              placeholder="Search Meals"
             />
           </div>
           <button
